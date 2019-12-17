@@ -24,11 +24,20 @@
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
     </head>
     <body>
-        <div class="uk-container uk-remove-margin uk-background-secondary">
+        <div class="uk-container uk-remove-margin uk-background-muted">
             <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
                 <div class="uk-navbar-left">
                     <ul class="uk-navbar-nav">
                         <li><a href="">Home</a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="https://github.com/arbazargani/Tiny-Task.git" class="uk-text-danger" target="_blank">
+                                <span uk-icon="icon: github"></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
