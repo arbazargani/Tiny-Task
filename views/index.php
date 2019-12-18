@@ -24,7 +24,7 @@
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
     </head>
     <body>
-        <div class="uk-container uk-remove-margin uk-background-muted">
+        <div class="uk-container uk-remove-margin uk-background-secondary">
             <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
                 <div class="uk-navbar-left">
                     <ul class="uk-navbar-nav">
@@ -91,7 +91,7 @@
     		<div class="uk-overflow-auto">
                 <h1>Tasks list</h1>
                 <?php if(count($tasks) > 1): ?>
-                <table class="uk-table uk-table-striped uk-table-hover">
+                <table class="uk-table uk-table-striped uk-table-responsive uk-table-hover">
                     <!-- <caption>Tasks</caption> -->
                     <thead>
                         <tr>
@@ -114,7 +114,7 @@
                     <tbody>
                         <?php foreach ($tasks as $task): ?>
                         <tr>
-                            <td><?php echo $task['title']?></td>
+                            <td><strong><?php echo $task['title']?></strong></td>
                             <td><?php echo $task['description']?></td>
                             <td><?php echo $task['state']?></td>
                             <td><?php echo $task['created_at']?></td>
