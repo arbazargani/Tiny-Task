@@ -22,6 +22,16 @@
         <!-- UIkit JS -->
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/b3zbxrwztsjum71vs51caf64xuyitiqpxu3irnfb1i7qgusn/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'#description',
+            plugins : 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
+            toolbar: 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
+            directionality : "rtl",
+            height: 500
+        });
+    </script>
     </head>
     <body>
         <div class="uk-container uk-remove-margin uk-background-secondary">
@@ -67,7 +77,7 @@
 
 
                                     <div class="uk-margin">
-                                        <textarea class="uk-textarea" name="description" rows="5" placeholder="description"><?php
+                                        <textarea class="uk-textarea" id="description" name="description" rows="5" placeholder="description"><?php
                                             if ($have_error) {
                                                 if (isset($_POST['description'])) {
                                                     echo $_POST['description']; 
