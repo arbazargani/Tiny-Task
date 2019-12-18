@@ -9,6 +9,7 @@ but from [2a946da commit](https://github.com/arbazargani/Tiny-Task/commit/2a946d
 
 ## Note
 - Consider that change the variables inside ```core/config.php```.
+- Define custom views for latest tasks inside ```views``` directory like ```template.task.SAMPLE.php```.
 
 ## License
 
