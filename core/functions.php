@@ -38,7 +38,7 @@
 	}
 	function Fetch_task() {
 		$handle = Connect_db();
-		$query = "SELECT * FROM tasks;";
+		$query = "SELECT * FROM tasks ORDER BY id DESC;";
 		$rows = $handle->query($query);
 		$tasks = mysqli_fetch_all($rows,MYSQLI_ASSOC);
 		return $tasks;
