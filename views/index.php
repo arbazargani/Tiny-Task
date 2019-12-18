@@ -8,6 +8,7 @@
         }
     }
     $tasks = Fetch_task();
+    $view = require '../core/views.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,16 +23,16 @@
         <!-- UIkit JS -->
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
-        <script src="https://cdn.tiny.cloud/1/b3zbxrwztsjum71vs51caf64xuyitiqpxu3irnfb1i7qgusn/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector:'#description',
-            plugins : 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
-            toolbar: 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
-            directionality : "rtl",
-            height: 500
-        });
-    </script>
+        <!-- <script src="https://cdn.tiny.cloud/1/b3zbxrwztsjum71vs51caf64xuyitiqpxu3irnfb1i7qgusn/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector:'#description',
+                plugins : 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
+                toolbar: 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
+                directionality : "rtl",
+                height: 500
+            });
+        </script> -->
     </head>
     <body>
         <div class="uk-container uk-remove-margin uk-background-secondary">
@@ -99,45 +100,18 @@
         </div>
     	<div class="uk-container uk-padding">
     		<div class="uk-overflow-auto">
-                <h1>Tasks list</h1>
-                <?php if(count($tasks) > 1): ?>
-                <table class="uk-table uk-table-striped uk-table-responsive uk-table-hover">
-                    <!-- <caption>Tasks</caption> -->
-                    <thead>
-                        <tr>
-                            <th>title</th>
-                            <th>description</th>
-                            <th>state</th>
-                            <th>created_at</th>
-                            <th>expires_at</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <td>title</td>
-                            <td>description</td>
-                            <td>state</td>
-                            <td>created_at</td>
-                            <td>expires_at</td>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <?php foreach ($tasks as $task): ?>
-                        <tr>
-                            <td><strong><?php echo $task['title']?></strong></td>
-                            <td><?php echo $task['description']?></td>
-                            <td><?php echo $task['state']?></td>
-                            <td><?php echo $task['created_at']?></td>
-                            <td><?php echo $task['expired_at']?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <?php else: ?>
-                    <div class="uk-alert uk-alert-warning">
-                        No task. +add
-                    </div>
-                <?php endif; ?> 
+                <h1 class="uk-text-left">Tasks list</h1>
+                <p class="uk-text-right">
+                    <a href="?view=table" uk-icon="icon: menu"></a>
+                    <a href="?view=accordion" uk-icon="icon: list"></a>
+                <p>
+                <?php
+                    if ($view) {
+                        include ("template.task.".$_GET['view'].".php");
+                    } else {
+                        include("template.task.table.php");
+                    }
+                ?>
             </div>
     	</div>
     </body>
