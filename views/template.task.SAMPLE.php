@@ -1,4 +1,4 @@
-                    <?php if(count($tasks) > 1): ?>
+                    <?php if(count($tasks) > 0): ?>
                     <?php foreach ($tasks as $task): ?>
 
                         <!-- task title -->

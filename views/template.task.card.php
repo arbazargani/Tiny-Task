@@ -1,4 +1,4 @@
-<?php if(count($tasks) > 1): ?>
+<?php if(count($tasks) > 0): ?>
     <?php $loop = 0; ?>
     <div class="uk-padding" uk-grid>
     <?php foreach ($tasks as $task): ?>
