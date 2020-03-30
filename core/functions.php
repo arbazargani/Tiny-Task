@@ -43,3 +43,19 @@
 		$tasks = mysqli_fetch_all($rows,MYSQLI_ASSOC);
 		return $tasks;
 	}
+
+    function Check_task($id) {
+        $handle = Connect_db();
+        $query = "UPDATE `tasks` SET `state` = 1 WHERE `id` = $id";
+        if(!$handle->query($query)) {
+            die ("Action fails: (" . $mysqli->errno . ") " . $mysqli->error);
+        }
+    }
+
+    function Delete_task($id) {
+        $handle = Connect_db();
+        $query = "DELETE FROM `tasks` WHERE `id` = $id";
+        if(!$handle->query($query)) {
+            die ("Action fails: (" . $mysqli->errno . ") " . $mysqli->error);
+        }
+    }

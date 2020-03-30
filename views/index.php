@@ -1,12 +1,6 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['title']) && !empty($_POST['title'])) {
-            Add_task($_POST['title'],$_POST['description'],0);
-        } else {
-            $have_error = 1;
-            $error = 'title is required.';
-        }
-    }
+    require '../core/processor.php';
+
     $tasks = Fetch_task();
     $view = require '../core/views.php';
 ?>
@@ -23,16 +17,16 @@
         <!-- UIkit JS -->
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
-        <!-- <script src="https://cdn.tiny.cloud/1/b3zbxrwztsjum71vs51caf64xuyitiqpxu3irnfb1i7qgusn/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <script>
-            tinymce.init({
-                selector:'#description',
-                plugins : 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
-                toolbar: 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',
-                directionality : "rtl",
-                height: 500
-            });
-        </script> -->
+        <script src="https://cdn.tiny.cloud/1/b3zbxrwztsjum71vs51caf64xuyitiqpxu3irnfb1i7qgusn/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<!--        <script>-->
+<!--            tinymce.init({-->
+<!--                selector:'#description',-->
+<!--                plugins : 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',-->
+<!--                toolbar: 'visualblocks wordcount ltr rtl directionality advlist autolink link image lists charmap print preview table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol code',-->
+<!--                directionality : "rtl",-->
+<!--                height: 500-->
+<!--            });-->
+<!--        </script>-->
     </head>
     <body>
         <div class="uk-container uk-remove-margin uk-background-secondary">
@@ -98,18 +92,19 @@
                 </ul>
             </div>
         </div>
-    	<div class="uk-container uk-padding">
+    	<div class="uk-container uk-padding uk-background-muted">
     		<div class="uk-overflow-auto">
                 <h1 class="uk-text-left">Tasks list</h1>
                 <p class="uk-text-right">
-                    <a href="?view=table" uk-icon="icon: menu"></a>
-                    <a href="?view=accordion" uk-icon="icon: list"></a>
+                    <a class="<?php echo (View_matches('table')) ? 'uk-label' :''; ?>" href="?view=table" uk-icon="icon: menu"></a>
+                    <a class="<?php echo (View_matches('accordion')) ? 'uk-label' :''; ?>" href="?view=accordion" uk-icon="icon: list"></a>
+                    <a class="<?php echo (View_matches('card')) ? 'uk-label' :''; ?>" href="?view=card" uk-icon="icon: thumbnails"></a>
                 <p>
                 <?php
                     if ($view) {
                         include ("template.task.".$_GET['view'].".php");
                     } else {
-                        include("template.task.table.php");
+                        include("template.task.card.php");
                     }
                 ?>
             </div>

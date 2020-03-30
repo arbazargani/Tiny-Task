@@ -12,3 +12,11 @@
 	} else {
 		return false;
 	}
+
+	function View_matches($name) {
+        if (isset($_GET['view']) && $_GET['view'] == $name) {
+            return true;
+        } else {
+            return false;
+        }
+    }
