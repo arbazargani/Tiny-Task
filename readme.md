@@ -1,6 +1,3 @@
-#Tiny Taskbook/TODO
-
-
 ## About
 
 Tiny taskbook is a simple taskbook or todo PHP script.
